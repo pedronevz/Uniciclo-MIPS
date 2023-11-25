@@ -1,0 +1,107 @@
+|ULA
+S <= lpm_mux3:inst21.result
+A => inst12.IN0
+A => lpm_mux2:inst15.data0
+Ainvert => lpm_mux2:inst15.sel
+B => inst.IN0
+B => lpm_mux2:inst16.data0
+Binvert => lpm_mux2:inst16.sel
+Cin => Adder:inst4.Cin
+select[0] => lpm_mux3:inst21.sel[0]
+select[1] => lpm_mux3:inst21.sel[1]
+Cout <= Adder:inst4.Cout
+
+
+|ULA|lpm_mux3:inst21
+data0 => lpm_mux:LPM_MUX_component.data[0][0]
+data1 => lpm_mux:LPM_MUX_component.data[1][0]
+data2 => lpm_mux:LPM_MUX_component.data[2][0]
+sel[0] => lpm_mux:LPM_MUX_component.sel[0]
+sel[1] => lpm_mux:LPM_MUX_component.sel[1]
+result <= lpm_mux:LPM_MUX_component.result[0]
+
+
+|ULA|lpm_mux3:inst21|lpm_mux:LPM_MUX_component
+data[0][0] => mux_0qc:auto_generated.data[0]
+data[1][0] => mux_0qc:auto_generated.data[1]
+data[2][0] => mux_0qc:auto_generated.data[2]
+sel[0] => mux_0qc:auto_generated.sel[0]
+sel[1] => mux_0qc:auto_generated.sel[1]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_0qc:auto_generated.result[0]
+
+
+|ULA|lpm_mux3:inst21|lpm_mux:LPM_MUX_component|mux_0qc:auto_generated
+data[0] => data0_wire[0].IN0
+data[1] => data1_wire[0].IN0
+data[2] => data2_wire[0].IN0
+result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => data0_wire[0].IN0
+sel[0] => data1_wire[0].IN1
+sel[1] => data2_wire[0].IN1
+sel[1] => _.IN0
+
+
+|ULA|lpm_mux2:inst15
+data0 => lpm_mux:LPM_MUX_component.data[0][0]
+data1 => lpm_mux:LPM_MUX_component.data[1][0]
+sel => lpm_mux:LPM_MUX_component.sel[0]
+result <= lpm_mux:LPM_MUX_component.result[0]
+
+
+|ULA|lpm_mux2:inst15|lpm_mux:LPM_MUX_component
+data[0][0] => mux_upc:auto_generated.data[0]
+data[1][0] => mux_upc:auto_generated.data[1]
+sel[0] => mux_upc:auto_generated.sel[0]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_upc:auto_generated.result[0]
+
+
+|ULA|lpm_mux2:inst15|lpm_mux:LPM_MUX_component|mux_upc:auto_generated
+data[0] => result_node[0].IN1
+data[1] => result_node[0].IN1
+result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => result_node[0].IN0
+sel[0] => _.IN0
+
+
+|ULA|lpm_mux2:inst16
+data0 => lpm_mux:LPM_MUX_component.data[0][0]
+data1 => lpm_mux:LPM_MUX_component.data[1][0]
+sel => lpm_mux:LPM_MUX_component.sel[0]
+result <= lpm_mux:LPM_MUX_component.result[0]
+
+
+|ULA|lpm_mux2:inst16|lpm_mux:LPM_MUX_component
+data[0][0] => mux_upc:auto_generated.data[0]
+data[1][0] => mux_upc:auto_generated.data[1]
+sel[0] => mux_upc:auto_generated.sel[0]
+clock => ~NO_FANOUT~
+aclr => ~NO_FANOUT~
+clken => ~NO_FANOUT~
+result[0] <= mux_upc:auto_generated.result[0]
+
+
+|ULA|lpm_mux2:inst16|lpm_mux:LPM_MUX_component|mux_upc:auto_generated
+data[0] => result_node[0].IN1
+data[1] => result_node[0].IN1
+result[0] <= result_node[0].DB_MAX_OUTPUT_PORT_TYPE
+sel[0] => result_node[0].IN0
+sel[0] => _.IN0
+
+
+|ULA|Adder:inst4
+Sum <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+A => inst.IN0
+A => inst3.IN1
+B => inst.IN1
+B => inst3.IN0
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
